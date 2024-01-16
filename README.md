@@ -9,6 +9,17 @@
  DataWizard est une application web qui vous permet de visualiser vos données avec facilité.
 </p>
 
+## Prérequis
+
+```bash
+Python installé (version 3.12.1 utilisé pour ce projet)
+```
+## Serveur de développement
+
+Démarrer le serveur sur `http://localhost:8501` (port par défault):
+
+```bash
+
 ## Installation
 
 Assurez vous d'installer les dépendances:
