@@ -14,11 +14,19 @@
 ```bash
 Python installé (version 3.12.1 utilisé pour ce projet)
 ```
-## Serveur de développement
 
-Démarrer le serveur sur `http://localhost:8501` (port par défault):
+## Environnement python
+
+Vous devez créer un environnement python pour lancer le serveur
 
 ```bash
+# Creation d'un environnement python
+py -3 -m venv .venv 
+
+# Activation de l'environnement
+.venv\Scripts\activate (Microsoft Windows)
+
+```
 
 ## Installation
 

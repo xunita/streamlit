@@ -190,8 +190,8 @@ if uploaded_file is not None:
     
     def is_potential_date(column):
       # Define regex patterns for both French and US date formats
-      p1= re.compile(r"\d{1,2}[.-]?\d{1,2}[.-]?\d{2,4}( \d{2}:\d{2}:\d{2})?")
-      p2 = re.compile(r"\d{2,4}[.-]?\d{1,2}[.-]?\d{1,2}( \d{2}:\d{2}:\d{2})?")
+      p1= re.compile(r"\d{1,2}[.-]?\d{1,2}[.-]?\d{4}( \d{2}:\d{2}:\d{2})?")
+      p2 = re.compile(r"\d{4}[.-]?\d{1,2}[.-]?\d{1,2}( \d{2}:\d{2}:\d{2})?")
   
       # Check if at least one value in the column matches either date pattern
       if column.dtype == 'O' or column.dtype == 'object' or column.dtype == 'category':
