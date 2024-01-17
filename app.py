@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import csv
 
-st.set_option('server.enableCORS', True)
+# st.set_option('server.enableCORS', True)
 
 # J'ai ajouté cette ligne pour éviter un warning de Streamlit
 st.set_option('deprecation.showPyplotGlobalUse', False)
