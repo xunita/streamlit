@@ -175,7 +175,11 @@ if uploaded_file is not None:
       
     # Nom du site
     st.sidebar.markdown(f"""
-    <h1 style="text-align: center; font-size: 48px; font-weight: bold; margin-top: 20px;">DataWiz</h1></div>
+    <div style="display: flex; align-items: center;">
+    <a href="/">
+        <img style="width: 60px; height: 56px; border-radius: 64px;" src="{logo}" alt="Logo" width="300">
+    </a>
+    <h1 style="text-align: center; font-size: 38px; font-weight: bold; margin-top: 20px;">DataWiz</h1></div>
 """, unsafe_allow_html=True)
     
     # Titre de la sidebar
