@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import csv
 
+st.set_option('server.enableCORS', True)
+
 # J'ai ajouté cette ligne pour éviter un warning de Streamlit
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -381,9 +383,3 @@ if uploaded_file is not None:
       histogram(after_filtre)
     elif(type_graphique == "Box Plot"):
       box_plot(after_filtre)
-      
-# app.py  
-# Your Streamlit app code here  
-
-if __name__ == '__main__':    
-  st.set_option('server.enableCORS', True)
