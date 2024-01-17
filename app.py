@@ -150,7 +150,7 @@ st.markdown(f"""
     <a href="/">
         <img style="width: 80px; height: 76px; border-radius: 64px;" src="{logo}" alt="Logo" width="300">
     </a>
-    <h1 style="text-align: center; font-size: 48px; font-weight: bold; margin-top: 20px;">DataWiz</h1></div>
+    <h1 style="text-align: center; font-size: 48px; font-weight: bold;">DataWiz</h1></div>
 """, unsafe_allow_html=True)
 
 
@@ -179,7 +179,7 @@ if uploaded_file is not None:
     <a href="/">
         <img style="width: 60px; height: 56px; border-radius: 64px;" src="{logo}" alt="Logo" width="300">
     </a>
-    <h1 style="text-align: center; font-size: 38px; font-weight: bold; margin-top: 20px;">DataWiz</h1></div>
+    <h1 style="text-align: center; font-size: 38px; font-weight: bold; margin-left:10px;">DataWiz</h1></div>
 """, unsafe_allow_html=True)
     
     # Titre de la sidebar
