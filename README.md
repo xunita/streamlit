@@ -9,6 +9,9 @@
  DataWizard est une application web qui vous permet de visualiser vos données avec facilité.
 </p>
 
+## Démo
+
+Consultez ce [lien](https://thedatawizard.azurewebsites.net/) pour une démo du site et de ses fonctionnalités.
 ## Prérequis
 
 ```bash
