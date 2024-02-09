@@ -196,8 +196,8 @@ if uploaded_file is not None:
     
     def is_potential_date(column):
       # Define regex patterns for both French and US date formats
-      p1= re.compile(r"\d{1,2}[.-]?\d{1,2}[.-]?\d{4}( \d{2}:\d{2}:\d{2})?")
-      p2 = re.compile(r"\d{4}[.-]?\d{1,2}[.-]?\d{1,2}( \d{2}:\d{2}:\d{2})?")
+      p1= re.compile(r"\d{1,2}[.-]\d{1,2}[.-]\d{4}( \d{2}:\d{2}:\d{2})?")
+      p2 = re.compile(r"\d{4}[.-]\d{1,2}[.-]\d{1,2}( \d{2}:\d{2}:\d{2})?")
   
       # Check if at least one value in the column matches either date pattern
       if column.dtype == 'O' or column.dtype == 'object' or column.dtype == 'category':
@@ -285,9 +285,9 @@ if uploaded_file is not None:
         try:
           # Vérifie si seconde date est sélectionnée avant de filtrer
           if len(selected_range ) > 1:
-            copy = copy[(pd.to_datetime(copy[filtre_par_colonne]) >= pd.to_datetime(selected_range[0])) & (pd.to_datetime(copy[filtre_par_colonne]) <= pd.to_datetime(selected_range[1]))]
+            copy = copy[(pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") >= pd.to_datetime(selected_range[0], format="ISO8601")) & (pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") <= pd.to_datetime(selected_range[1], format="ISO8601"))]
           else:
-            copy = copy[pd.to_datetime(copy[filtre_par_colonne]) >= pd.to_datetime(selected_range[0])]
+            copy = copy[pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") >= pd.to_datetime(selected_range[0], format="ISO8601")]
         except (ValueError, TypeError):
           st.sidebar.error("Unable to convert search term to date.")
           pass
