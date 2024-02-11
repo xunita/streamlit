@@ -525,10 +525,9 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
 elif st.session_state['page'] == "documentation":
   st.title('Tutoriel')
   # Code pour mettre une vidéo
-  video_file = open('https://www.canva.com/design/DAF8hOrJuVY/AHYCZL0T-QMvqdk6oMXfSQ/watch?utm_content=DAF8hOrJuVY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel', 'rb')
-  video_bytes = video_file.read()
+  
 
-  #st.video(video_bytes)
+  st.video("https://firebasestorage.googleapis.com/v0/b/hyphip-8ca89.appspot.com/o/3c1d1e279e.mp4?alt=media&token=b0a7e0e9-1978-49fc-9c9b-40b4a45aa09c")
 
 
 #Si on est sur la page About us
