@@ -36,14 +36,8 @@ py -3 -m venv .venv
 Assurez vous d'installer les dépendances:
 
 ```bash
-# Streamlit
-pip install streamlit
-
-# Seaborn
-pip install seaborn
-
-# Altair (si besoin)
-pip install altair
+# Toutes les dépendances
+pip install -r requirements.txt
 ```
 ## Serveur de développement
 
