@@ -55,7 +55,3 @@ Consultez cette [documentation de déploiement](https://docs.streamlit.io/knowle
 ## Lien Wiki
 
 Consultez ce [wiki](https://feature-flow-portal.atlassian.net/l/cp/vQ3mYJmn) pour plus d'informations.
-
-## Démo en ligne
-
-Consultez ce site [DataWiz](https://thedatawizard.azurewebsites.net/) pour une démo de l'application.
