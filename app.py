@@ -382,11 +382,18 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
       elif colType == "datetime":
         if selected_range:
          try:
-            # Vérifie si seconde date est sélectionnée avant de filtrer
+            # Vérifie qi marche en local
            if len(selected_range ) > 1:
             copy = copy[(pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") >= pd.to_datetime(selected_range[0], format = "ISO8601")) & (pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") <= pd.to_datetime(selected_range[1], format = "ISO8601"))]
            else:
             copy = copy[pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") >= pd.to_datetime(selected_range[0], format = "ISO8601")]
+            
+          # Version qui marche sur google colab
+          #  if len(selected_range ) > 1:
+          #   copy = copy[(pd.to_datetime(copy[filtre_par_colonne], infer_datetime_format=True) >= pd.to_datetime(selected_range[0], infer_datetime_format=True)) & (pd.to_datetime(copy[filtre_par_colonne], infer_datetime_format=True) <= pd.to_datetime(selected_range[1], infer_datetime_format=True))]
+          #  else:
+          #   copy = copy[pd.to_datetime(copy[filtre_par_colonne], infer_datetime_format=True) >= pd.to_datetime(selected_range[0], infer_datetime_format=True)]
+            
          except Exception as e:
            st.sidebar.error(e)
            # st.sidebar.error("Unable to convert search term to date.")
@@ -488,7 +495,7 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
       elif(type_graphique == "Box Plot"):
         box_plot(after_filtre)
       # Configurez votre clé API GPT-3
-      openai.api_key = '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'
+      openai.api_key = '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'
       qst= dataframe.head(20).to_string()
       #st.write(qst)
       st.title("AI Assistant(Only the 20 first lines are selected)")
