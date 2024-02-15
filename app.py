@@ -18,7 +18,6 @@ import csv
 
 # J'ai ajouté cette ligne pour éviter un warning de Streamlit
 st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # Permet de changer le titre de la page, l'icône et la mise en page
 st.set_page_config(
     page_title="DataWiz | DataWiz est une application web qui permet de visualiser et de traiter des données.",
@@ -99,7 +98,7 @@ st.markdown(page_bg, unsafe_allow_html=True)
 
 
 # lien vers le logo de la page
-#logo = "https://firebasestorage.googleapis.com/v0/b/hyphip-8ca89.appspot.com/o/logoWhite_1.png?alt=media&token=06b79fdd-8c5e-4054-868a-3ae2a308e0e4"
+
 logo = "https://firebasestorage.googleapis.com/v0/b/hyphip-8ca89.appspot.com/o/datawiz-removebg-preview.png?alt=media&token=3619a395-795c-4bf1-b054-6bc018369c87"
 # fonction pour ordonner les données selon une colonne et un ordre
 def order_by(dataframe, column, ascending=True):
@@ -114,8 +113,8 @@ def detect_separator(uploaded_file):
 
   # Utiliser Sniffer pour détecter le séparateur
   # 8192 pour traiter 8kb(premiers caractères) de données mais on peut
-  # ajuster la valeur selon la taille du fichier max prévu pour l'application.
-  # Augmenter jusqu'à fonctionnement si le fichier est plus grand.
+  # ajuster la valeur selon le nombre de colonnes.
+  # Augmenter jusqu'à fonctionnement si le nombre de colonnes est elevé
   dialect = csv.Sniffer().sniff(content[:8192])
 
   return dialect.delimiter
@@ -247,11 +246,24 @@ with col2:
 
 #Si aucun document n'est sélectionné
 if 'page' not in st.session_state or st.session_state['page'] == ""  :
+
+  markdown_text = """
+    <div style="text-align: center;">
+      <h2 style="color: #FFFFFF;">Welcome to DataWiz - Your Data Analysis and Simulation Hub!</h2>
+      <h2 style="color: #F6F2FC; opacity: 0.4;">Explore, Analyze, and Simulate with DataWiz</h2>
+    </div>
+  """
+
+  # Affichage du texte Markdown
+  st.markdown(markdown_text, unsafe_allow_html=True)
+
   # Chargement du fichier (csv seulement pour le moment, à améliorer si intéressé(e))
   uploaded_file = st.file_uploader("Choose a CSV file to upload", type="csv")
 
+
   # Si un fichier est chargé (taille <= 200 MB) alors on continue
   if uploaded_file is not None:
+
       # Convertir le fichier en bytes
       bytes_data = uploaded_file.getvalue()
       try:
@@ -262,7 +274,7 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
 
       except:
         # Afficher un message d'erreur si le séparateur n'est pas détecté
-        st.error("Unable to detect separator. Please check your file and try again.")
+        st.error("Unable to detect separator. Please check your file and try again. ou nombre de colonnes trop élevé")
         # Arrêter l'exécution du script
         sys.exit()
 
@@ -283,8 +295,8 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
 
       def is_potential_date(column):
         # Define regex patterns for both French and US date formats
-        p1= re.compile(r"\d{1,2}[.-]\d{1,2}[.-]\d{4}( \d{2}:\d{2}:\d{2})?")
-        p2 = re.compile(r"\d{4}[.-]\d{1,2}[.-]\d{1,2}( \d{2}:\d{2}:\d{2})?")
+        p1= re.compile(r"\d{1,2}[.-]\d{1,2}[.-]\d{4}( \d{2}:\d{2}:\d{2})?") # French date format (dd-mm-yyyy)
+        p2 = re.compile(r"\d{4}[.-]\d{1,2}[.-]\d{1,2}( \d{2}:\d{2}:\d{2})?") # US date format (yyyy-mm-dd)
 
         # Check if at least one value in the column matches either date pattern
         if column.dtype == 'O' or column.dtype == 'object' or column.dtype == 'category':
@@ -372,9 +384,9 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
          try:
             # Vérifie si seconde date est sélectionnée avant de filtrer
            if len(selected_range ) > 1:
-            copy = copy[(pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") >= pd.to_datetime(selected_range[0], format="ISO8601")) & (pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") <= pd.to_datetime(selected_range[1], format="ISO8601"))]
+            copy = copy[(pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") >= pd.to_datetime(selected_range[0], format = "ISO8601")) & (pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") <= pd.to_datetime(selected_range[1], format = "ISO8601"))]
            else:
-            copy = copy[pd.to_datetime(copy[filtre_par_colonne], format="ISO8601") >= pd.to_datetime(selected_range[0], format="ISO8601")]
+            copy = copy[pd.to_datetime(copy[filtre_par_colonne], format = "ISO8601") >= pd.to_datetime(selected_range[0], format = "ISO8601")]
          except Exception as e:
            st.sidebar.error(e)
            # st.sidebar.error("Unable to convert search term to date.")
@@ -476,12 +488,10 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
       elif(type_graphique == "Box Plot"):
         box_plot(after_filtre)
       # Configurez votre clé API GPT-3
-      openai.api_key = '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'
+      openai.api_key = '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'
       qst= dataframe.head(20).to_string()
       #st.write(qst)
       st.title("AI Assistant(Only the 20 first lines are selected)")
-
-      openai.api_key = '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'
 
       if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -517,15 +527,13 @@ if 'page' not in st.session_state or st.session_state['page'] == ""  :
               full_response += response.choices[0].delta.content
               message_placeholder.markdown(full_response + "▌")
           except Exception as e:
-            st.error("Ahaha tu veux aller plus loin ? payyyyyye")
+            st.error("Ahaha you want to go further? You will have to pay because it's no longer free")
           message_placeholder.markdown(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 # Si on est sur la page documentation
 elif st.session_state['page'] == "documentation":
   st.title('Tutoriel')
-  # Code pour mettre une vidéo
-  
 
   st.video("https://firebasestorage.googleapis.com/v0/b/hyphip-8ca89.appspot.com/o/3c1d1e279e.mp4?alt=media&token=b0a7e0e9-1978-49fc-9c9b-40b4a45aa09c")
 
