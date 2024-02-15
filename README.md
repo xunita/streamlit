@@ -51,3 +51,11 @@ streamlit run app.py
 ## Déploiment en ligne
 
 Consultez cette [documentation de déploiement](https://docs.streamlit.io/knowledge-base/tutorials/deploy) pour plus d'informations.
+
+## Lien Wiki
+
+Consultez ce [wiki](https://feature-flow-portal.atlassian.net/l/cp/vQ3mYJmn) pour plus d'informations.
+
+## Démo en ligne
+
+Consultez ce site [DataWiz](https://thedatawizard.azurewebsites.net/) pour une démo de l'application.
