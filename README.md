@@ -51,3 +51,11 @@ streamlit run app.py
 ## Déploiment en ligne
 
 Consultez cette [documentation de déploiement](https://docs.streamlit.io/knowledge-base/tutorials/deploy) pour plus d'informations.
+
+## Lien Wiki
+
+Consultez ce [wiki](https://feature-flow-portal.atlassian.net/l/cp/vQ3mYJmn) pour plus d'informations.
+
+## Vidéo démo d'utilisation
+
+Consultez ce [lien](https://firebasestorage.googleapis.com/v0/b/hyphip-8ca89.appspot.com/o/3c1d1e279e.mp4?alt=media&token=b0a7e0e9-1978-49fc-9c9b-40b4a45aa09c) pour voir une vidéo de démonstration.
